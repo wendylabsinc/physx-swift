@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  core:
+    name: Core (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2.4.0
+        with:
+          swift-version: "6.3.2"
+      - name: Swift version
+        run: swift --version
+      - name: Build
+        run: swift build
+      - name: Test
+        run: swift test
+
+  documentation:
+    name: DocC
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2.4.0
+        with:
+          swift-version: "6.3.2"
+      - name: Swift version
+        run: swift --version
+      - name: Generate documentation
+        run: swift package generate-documentation --target PhysX --warnings-as-errors

@@ -1,0 +1,7 @@
+PhysX Swift is an independent Swift SDK surface for NVIDIA Omniverse PhysX.
+
+NVIDIA PhysX is distributed by NVIDIA Corporation under the BSD 3-Clause
+License. This repository does not vendor NVIDIA PhysX source or binaries.
+Users are responsible for obtaining and building PhysX from:
+
+https://github.com/NVIDIA-Omniverse/PhysX
