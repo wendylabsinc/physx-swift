@@ -20,18 +20,6 @@ jobs:
       - name: Test
         run: swift test
 
-  core-macos:
-    name: Core (macOS)
-    runs-on: macos-26-arm64
-    steps:
-      - uses: actions/checkout@v4
-      - name: Swift version
-        run: swift --version
-      - name: Build
-        run: swift build
-      - name: Test
-        run: swift test
-
   documentation:
     name: DocC
     runs-on: ubuntu-24.04
